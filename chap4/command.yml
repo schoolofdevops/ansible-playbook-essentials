@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: vagrant
+  sudo: yes
+  tasks: 
+   - name: running a raw command 
+     raw: uptime
+
+   - name: run a command on target node
+     command: ls -ltr
+     args:
+       chdir: /etc
+
+   - name: run a shell command on target node
+     shell: ls -ltr | grep host >> /tmp/hostconfigs
+     args:
+       chdir: /etc

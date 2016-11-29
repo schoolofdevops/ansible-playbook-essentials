@@ -1,0 +1,16 @@
+---
+- hosts: www
+  remote_user: vagrant
+  sudo: yes
+  pre_tasks:
+     - shell: echo 'I":" Beginning to configure web server..'
+  roles:
+     - { role: nginx, when: ansible_os_family == 'Debian' }
+     - php5-fpm
+     - wordpress
+  post_tasks:
+     - shell: echo 'I":" Done configuring nginx web server...'
+
+  vars:
+    cluster:
+      id: clusterB

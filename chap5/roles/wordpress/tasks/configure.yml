@@ -1,0 +1,18 @@
+---
+  - name: change permissions for wordpress site
+    file: 
+      path: "{{ wp_docroot }}/{{ wp_sitedir }}"
+      state: directory
+      owner: "{{ wp_user }}"
+      group: "{{ wp_group }}"
+      recurse: true
+
+  - name: get unique salt for wordpress 
+    local_action: command curl https://api.wordpress.org/secret-key/1.1/salt
+    register: wp_salt
+
+  - name: copy wordpress template 
+    template: 
+      src: wp-config.php.j2
+      dest: "{{ wp_docroot }}/{{ wp_sitedir }}/wp-config.php"
+      mode: 0644

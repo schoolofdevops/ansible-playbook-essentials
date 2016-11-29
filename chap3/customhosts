@@ -1,0 +1,10 @@
+#customhosts
+#inventory configs for my cluster
+[db]
+192.168.61.11 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/vagrant/insecure_private_key
+192.168.61.14 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/vagrant/insecure_private_key
+[www]
+192.168.61.12 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/vagrant/insecure_private_key
+
+[lb]
+192.168.61.13 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/vagrant/insecure_private_key

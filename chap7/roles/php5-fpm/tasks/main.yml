@@ -1,0 +1,9 @@
+---
+#filename: roles/php5-fpm/tasks/main.yml
+# tasks file for php5-fpm
+- include_vars: "{{ ansible_os_family }}.yml"
+  when: ansible_os_family != 'Debian'
+
+- include: install.yml
+- include: service.yml
+

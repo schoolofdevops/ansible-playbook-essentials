@@ -1,0 +1,2 @@
+#filename: group_vars/all
+mysql_bind:  "{{ ansible_eth0.ipv4.address }}"

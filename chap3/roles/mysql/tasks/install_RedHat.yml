@@ -1,0 +1,6 @@
+---
+# filename: roles/mysql/tasks/install_RedHat.yml
+- name: install mysql server
+  yum: 
+    name: "{{ mysql_pkg }}"  
+    update_cache: yes

@@ -1,0 +1,28 @@
+---
+# filename: roles/wordpress/tasks/install.yml
+  - name: download wordpress
+    command: /usr/bin/wget -c https://wordpress.org/latest.tar.gz
+    args: 
+      chdir: "{{ wp_srcdir }}"
+      creates: "{{ wp_srcdir }}/latest.tar.gz"
+    register: wp_download
+    tags:
+     - install 
+
+  - name: create nginx docroot 
+    file: 
+      path: "{{ wp_docroot }}" 
+      state: directory
+      owner: "{{ wp_user }}"
+      group: "{{ wp_group }}"
+    tags:
+     - install 
+
+  - name: extract wordpress
+    shell: "tar xzf latest.tar.gz && mv wordpress {{ wp_docroot }}/{{ wp_sitedir }}"
+    args: 
+      chdir: "{{ wp_srcdir }}"
+      creates: "{{ wp_docroot }}/{{ wp_sitedir }}"
+    when: wp_download.rc == 0
+    tags:
+     - install 

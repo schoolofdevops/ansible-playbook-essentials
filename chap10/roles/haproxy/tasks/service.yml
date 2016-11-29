@@ -1,0 +1,8 @@
+---
+# filename: roles/haproxy/tasks/service.yml
+ - name: start haproxy server
+   service: 
+     name: "{{ haproxy['service'] }}" 
+     state: started   
+   tags:
+    - start 

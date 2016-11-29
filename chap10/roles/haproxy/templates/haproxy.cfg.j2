@@ -1,0 +1,28 @@
+#filename: roles/haproxy/templates/haproxy.cfg.j2
+global
+        log 127.0.0.1   local0
+        log 127.0.0.1   local1 notice
+        maxconn 4096
+        user haproxy
+        group haproxy
+        daemon
+        stats socket /var/lib/haproxystats level admin
+
+defaults
+        log     global
+        mode    http
+        option  httplog
+        option  dontlognull
+        retries 3
+        option redispatch
+        maxconn 2000
+        contimeout      5000
+        clitimeout      50000
+        srvtimeout      50000
+
+listen  fifanews {{ haproxy['config']['listen_address'] }}:{{ haproxy['config']['listen_port'] }}
+        cookie  SERVERID rewrite
+        balance roundrobin
+    {% for host in groups['www'] -%}
+        server  {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_eth1']['ipv4']['address'] }}:{{ hostvars[host]['nginx']['phpsites']['fifanews']['port'] }} cookie {{ hostvars[host]['inventory_hostname'] }} check 
+    {% endfor -%}

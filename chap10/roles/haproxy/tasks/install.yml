@@ -1,0 +1,7 @@
+---
+# filename: roles/haproxy/tasks/install.yml
+  - name: install haproxy
+    apt: 
+      name: "{{ haproxy['pkg'] }}"
+    tags:
+     - install 

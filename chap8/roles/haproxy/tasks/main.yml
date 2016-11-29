@@ -1,0 +1,5 @@
+---
+# filename: roles/haproxy/tasks/main.yml
+- include: install.yml
+- include: configure.yml
+- include: service.yml

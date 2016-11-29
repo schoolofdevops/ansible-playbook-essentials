@@ -1,0 +1,10 @@
+---
+# filename: roles/haproxy/defaults/main.yml
+haproxy:
+  config:
+    cnfpath: /etc/haproxy/haproxy.cfg
+    enabled: 1
+    listen_address: 0.0.0.0
+    listen_port: 8080
+  service: haproxy
+  pkg: haproxy

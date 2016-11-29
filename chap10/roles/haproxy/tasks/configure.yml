@@ -1,0 +1,16 @@
+---
+# filename: roles/haproxy/tasks/configure.yml
+ - name: create haproxy config 
+   template: src="haproxy.cfg.j2" dest="{{ haproxy['config']['cnfpath'] }}" mode=0644
+   notify: 
+    - restart haproxy service
+   tags:
+    - configure 
+
+
+ - name: enable haproxy  
+   template: src="haproxy.default.j2" dest=/etc/default/haproxy mode=0644
+   notify: 
+    - restart haproxy service
+   tags:
+    - configure 

@@ -1,0 +1,10 @@
+---
+ - name: add official nginx repository
+   apt_repository: repo='deb http://nginx.org/packages/ubuntu/ lucid nginx'
+   tags:
+    - install 
+
+ - name: install nginx web server and ensure its at the latest version
+   apt: name=nginx state=latest force=yes
+   tags:
+    - install 

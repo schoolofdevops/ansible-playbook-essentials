@@ -1,0 +1,23 @@
+---
+# filename: roles/nginx/tasks/configure_ssl.yml
+ - name: create ssl directory
+   file: path="{{ nginx_ssl_path }}" state=directory owner=root group=root
+   tags:
+    - ssl 
+
+ - name: add ssl key 
+   template: src=nginx.key.j2 dest="{{ nginx_ssl_path }}/nginx.key" mode=0644
+   tags:
+    - ssl 
+
+ - name: add ssl cert 
+   template: src=nginx.crt.j2 dest="{{ nginx_ssl_path }}/nginx.crt" mode=0644
+   tags:
+    - ssl 
+
+ - name: create ssl site configurations 
+   template: src=default_ssl.conf.j2 dest=/etc/nginx/conf.d/default_ssl.conf mode=0644
+   notify: 
+    - restart nginx service
+   tags:
+    - ssl 

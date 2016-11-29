@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Gourav Shah
+  description: Wordpress role
+  company: PACKT
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - lucid
+dependencies:
+  - { role: base}
+  - { role: nginx}
+  - { role: mysql}
+

@@ -1,0 +1,12 @@
+server {
+    listen       {{ nginx_port_ssl }};
+    server_name  {{ ansible_hostname }};
+    ssl    on;
+    ssl_certificate      {{ nginx_ssl_path }}/{{ nginx_ssl_cert_file }}; 
+    ssl_certificate_key  {{ nginx_ssl_path }}/{{ nginx_ssl_key_file }};
+
+    location / {
+        root   {{ nginx_root }};
+        index  {{ nginx_index }};
+    }
+}

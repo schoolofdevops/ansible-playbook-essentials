@@ -1,0 +1,8 @@
+#filename: roles/php5-fpm/tasks/stop.yml
+# stop php5-fpm service
+- name: stop php5-fpm service
+  service: 
+    name: "{{ php5['service']['name'] }}" 
+    state: stopped   
+  tags:
+   - stop 

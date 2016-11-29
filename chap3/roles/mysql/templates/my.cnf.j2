@@ -1,0 +1,12 @@
+# Notice: This file is being managed by Ansible
+# Any manual updates will be overwritten
+# filename: roles/mysql/templates/my.cnf.j2 
+
+[mysqld]
+user		 = {{ mysql_user | default("mysql") }}
+pid-file	 = {{ mysql_pid }}
+socket		 = {{ mysql_socket }}
+port		 = {{ mysql_port }}
+datadir		 = {{ mysql_datadir }}
+bind-address = {{ mysql_bind }}
+

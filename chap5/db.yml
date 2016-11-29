@@ -1,0 +1,17 @@
+---
+# Playbook for Database Servers
+# filename: db.yml
+- hosts: db
+  remote_user: vagrant
+  sudo: yes
+  roles:
+     - { role: mysql }
+  vars:
+    mysql:
+      server: true
+      config: 
+        bind: "{{ ansible_eth1.ipv4.address }}"
+
+  
+
+

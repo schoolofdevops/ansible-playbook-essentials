@@ -1,0 +1,19 @@
+server {
+    listen   80;
+
+  location / {
+        root   /var/www/blog;
+        index  index.php;
+    }
+
+    location ~ .php$ {
+        fastcgi_split_path_info ^(.+\.php)(.*)$;
+        fastcgi_pass   backend;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  /var/www/$document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+upstream backend {
+        server 127.0.0.1:9000;
+}

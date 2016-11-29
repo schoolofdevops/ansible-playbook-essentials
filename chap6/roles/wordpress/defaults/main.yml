@@ -1,0 +1,10 @@
+---
+wp_srcdir: /usr/local/src 
+wp_docroot: /var/www
+wp_sitedir: fifanews
+wp_user: nginx
+wp_group: nginx
+wp_dbname: fifanews
+wp_dbuser: fifa
+wp_dbpass: supersecure1234
+wp_dbhost: 192.168.61.11

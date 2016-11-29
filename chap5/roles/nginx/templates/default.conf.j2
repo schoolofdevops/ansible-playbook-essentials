@@ -1,0 +1,9 @@
+server {
+    listen       {{ nginx_port }};
+    server_name  {{ ansible_hostname }};
+
+    location / {
+        root   {{ nginx_root }};
+        index  {{ nginx_index }};
+    }
+}

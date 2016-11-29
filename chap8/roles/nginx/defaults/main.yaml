@@ -1,0 +1,10 @@
+---
+#file: roles/nginx/defaults/main.yml
+nginx_port: 80
+nginx_root: /usr/share/nginx/html
+nginx_index: index.html
+nginx_ssl: true
+nginx_port_ssl: 443
+nginx_ssl_path: /etc/nginx/ssl
+nginx_ssl_cert_file: nginx.crt
+nginx_ssl_key_file: nginx.key

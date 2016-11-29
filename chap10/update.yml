@@ -1,0 +1,29 @@
+---
+# Playbook for updating web server in batches
+# filename: update.yml
+
+- hosts: www
+  remote_user: vagrant
+  sudo: yes
+  serial: 1
+
+  pre_tasks:
+     - name: deregister webserver from  load balancer
+       shell: echo "disable server fifanews/{{ ansible_hostname }}" | socat stdio /var/lib/haproxystats
+       delegate_to: "{{ item }}"
+       with_items: groups.lb
+  
+  roles:
+     - { role: nginx, when: ansible_os_family == 'Debian' }
+     - php5-fpm
+     - wordpress
+  
+  post_tasks:
+     - name: wait for web server to come up 
+       wait_for: host={{ inventory_hostname }} port=80 state=started
+
+     - name: register webserver from  load balancer
+       shell: echo "enable server fifanews/{{ ansible_hostname }}" | socat stdio /var/lib/haproxystats
+       delegate_to: "{{ item }}"
+       with_items: groups.lb
+

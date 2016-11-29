@@ -1,0 +1,8 @@
+#filename: roles/php5-fpm/tasks/service.yml
+# manage php5-fpm service
+- name: start php5-fpm service
+  service: 
+    name: "{{ php5['service']['name'] }}" 
+    state: started   
+  tags:
+   - start 

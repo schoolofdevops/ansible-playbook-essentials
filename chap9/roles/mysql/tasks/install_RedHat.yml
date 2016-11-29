@@ -1,0 +1,10 @@
+---
+# filename: roles/mysql/tasks/install_RedHat.yml
+- name: install mysql server
+  yum: 
+    name: "{{ mysql['pkg']['server'] }}"  
+  when: mysql.server
+
+- name: install mysql python binding
+  yum: 
+    name: "{{ mysql['pkg']['python'] }}"

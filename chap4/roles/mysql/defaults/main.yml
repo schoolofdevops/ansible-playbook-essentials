@@ -1,0 +1,10 @@
+---
+mysql_user: mysql
+mysql_port: 3306
+mysql_datadir: /var/lib/mysql
+mysql_bind: 127.0.0.1
+mysql_pkg: mysql-server
+mysql_pid: /var/run/mysqld/mysqld.pid
+mysql_socket: /var/run/mysqld/mysqld.sock
+mysql_cnfpath: /etc/mysql/my.cnf
+mysql_service: mysql

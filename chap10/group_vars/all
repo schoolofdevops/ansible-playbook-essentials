@@ -1,0 +1,21 @@
+#filename: group_vars/all
+mysql_bind:  "{{ ansible_eth0.ipv4.address }}"
+mysql:
+  databases:
+    fifalive:
+      state: present
+    fifanews:
+      state: present
+  users:
+    fifa:
+      pass: supersecure1234
+      host: '%'
+      priv: '*.*:ALL'
+      state: present
+nginx:
+  phpsites:
+    fifanews:
+      name: fifanews.com
+      port: 8080
+      doc_root: /var/www/fifanews
+env_name: default

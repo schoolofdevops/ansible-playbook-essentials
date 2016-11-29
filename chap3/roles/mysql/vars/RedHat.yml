@@ -1,0 +1,7 @@
+---
+# RedHat Specific Configs. 
+# roles/mysql/vars/RedHat.yml
+mysql_socket: /var/lib/mysql/mysql.sock
+mysql_cnfpath: /etc/my.cnf
+mysql_service: mysqld
+mysql_bind: 0.0.0.0

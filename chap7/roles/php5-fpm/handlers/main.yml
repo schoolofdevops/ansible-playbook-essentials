@@ -1,0 +1,5 @@
+---
+# filename: roles/php5-fpm/handlers/main.yml
+# handlers file for php5-fpm
+- name: restart php5-fpm service
+  service: name="{{ php5['service']['name'] }}" state=restarted

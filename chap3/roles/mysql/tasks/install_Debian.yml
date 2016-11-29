@@ -1,0 +1,8 @@
+---
+# filename: roles/mysql/tasks/install_Debian.yml
+
+  - name: install mysql server
+    apt: 
+      name: "{{ mysql_pkg }}" 
+      update_cache: yes
+

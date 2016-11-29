@@ -1,0 +1,5 @@
+---
+#file: roles/nginx/defaults/main.yml
+nginx_port: 80
+nginx_root: /usr/share/nginx/html
+nginx_index: index.html
